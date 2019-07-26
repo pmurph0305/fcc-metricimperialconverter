@@ -28,8 +28,11 @@ function ConvertHandler() {
   };
   
   this.getUnit = function(input) {
-    var result;
-    
+    let validUnits = ['gal','l','mi','km','lbs','kg','GAL','L','MI','KM','LBS','KG'];
+    var result = validUnits.find(unit => unit === input);
+    if (!result) {
+      result = 'invalid unit';
+    }
     return result;
   };
   

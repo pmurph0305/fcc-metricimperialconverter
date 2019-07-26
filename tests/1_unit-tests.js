@@ -60,22 +60,24 @@ suite('Unit Tests', function(){
     
   });
   
-  // suite('Function convertHandler.getUnit(input)', function() {
+  suite('Function convertHandler.getUnit(input)', function() {
     
-  //   test('For Each Valid Unit Inputs', function(done) {
-  //     var input = ['gal','l','mi','km','lbs','kg','GAL','L','MI','KM','LBS','KG'];
-  //     input.forEach(function(ele) {
-  //       //assert
-  //     });
-  //     done();
-  //   });
+    test('For Each Valid Unit Inputs', function(done) {
+      var input = ['gal','l','mi','km','lbs','kg','GAL','L','MI','KM','LBS','KG'];
+      input.forEach(function(ele) {
+        let result = convertHandler.getUnit(ele);
+        assert.equal(result, ele, result + " does not equal " + ele);
+      });
+      done();
+    });
     
-  //   test('Unknown Unit Input', function(done) {
-      
-  //     //done();
-  //   });  
-    
-  // });
+    test('Unknown Unit Input', function(done) {
+      var input = 'something invalid';
+      let result = convertHandler.getUnit(input);
+      assert.equal(result, 'invalid unit', result + " does not equal 'invalid unit'");
+      done();
+    });  
+  });
   
   // suite('Function convertHandler.getReturnUnit(initUnit)', function() {
     
