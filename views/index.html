@@ -61,7 +61,7 @@
         $('#convertForm').submit(function() {
           event.preventDefault();
           $.ajax({
-            url: '/api/convert',
+            url: document.URL + 'api/convert',
             type: 'get',
             data: $('#convertForm').serialize(),
             success: function(data) {
