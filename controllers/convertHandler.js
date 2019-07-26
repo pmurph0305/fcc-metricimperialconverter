@@ -15,16 +15,16 @@ function ConvertHandler() {
     if (result && result[0].includes('/')) {
       let vals = result[0].split('/');
       if (vals.length == 2) {
-        result = vals[0]/vals[1];   
+        return vals[0]/vals[1];   
       } else {
         // US 8: If my unit of measurement is invalid, returned will be 'invalid unit'.
-        result = 'invalid number';
+        return 'invalid number'
       }
     } else if (!result) {
       // US 11: if nothing is provided it will default to 1.
-      result = 1;
+      return 1;
     }
-    return result;
+    return Number(result[0]);
   };
   
   this.getUnit = function(input) {
@@ -81,14 +81,12 @@ function ConvertHandler() {
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
-    var result;
     // US 12: string spelling out units in format {initNum} {initial_Units} 
     // converts to {returnNum} {return_Units} with the result rounded to 5 decimals.
     // initNum and returnNum are strings, so convert them to numbers, then round to 5 decimal places
     // then covert that to a number, then back to a string to remove trailing 0's...
-    result = Number(Number(initNum).toFixed(5)).toString() + ' ' + this.spellOutUnit(initUnit) 
-      + ' converts to ' + Number(Number(returnNum).toFixed(5)).toString() + ' ' + this.spellOutUnit(returnUnit);
-    return result;
+    return Number(Number(initNum).toFixed(5)).toString() + ' ' + this.spellOutUnit(initUnit) 
+    + ' converts to ' + Number(Number(returnNum).toFixed(5)).toString() + ' ' + this.spellOutUnit(returnUnit);
   };
 }
 
