@@ -45,6 +45,9 @@ function ConvertHandler() {
     var output = ['L','gal','km','mi','kg','lbs'];
     let inputIndex = input.indexOf(initUnit.toLowerCase());
     var result = output[inputIndex];
+    if (!result) {
+      return 'invalid unit';
+    }
     return result;
   };
 
@@ -59,7 +62,6 @@ function ConvertHandler() {
     const galToL = 3.78541;
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
-   // var result;
     switch(initUnit) {
       case 'gal':
         return initNum * galToL;
@@ -76,17 +78,18 @@ function ConvertHandler() {
       default:
         return 0;
     }
-    
-
-    //return result;
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
     var result;
-    
+    // US 12: string spelling out units in format {initNum} {initial_Units} 
+    // converts to {returnNum} {return_Units} with the result rounded to 5 decimals.
+    // initNum and returnNum are strings, so convert them to numbers, then round to 5 decimal places
+    // then covert that to a number, then back to a string to remove trailing 0's...
+    result = Number(Number(initNum).toFixed(5)).toString() + ' ' + this.spellOutUnit(initUnit) 
+      + ' converts to ' + Number(Number(returnNum).toFixed(5)).toString() + ' ' + this.spellOutUnit(returnUnit);
     return result;
   };
-  
 }
 
 module.exports = ConvertHandler;
