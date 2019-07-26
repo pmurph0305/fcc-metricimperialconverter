@@ -37,7 +37,11 @@ function ConvertHandler() {
   };
   
   this.getReturnUnit = function(initUnit) {
-    var result;
+    var input = ['gal','l','mi','km','lbs','kg', 'GAL','L','MI','KM','LBS','KG'];
+    var output = ['l','gal','km','mi','kg','lbs', 'L', 'GAL', 'KM', 'MI', 'KG', 'LBS'];
+    let inputIndex = input.indexOf(initUnit.toLowerCase());
+
+    var result = output[inputIndex];
     
     return result;
   };
