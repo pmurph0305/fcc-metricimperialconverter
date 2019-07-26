@@ -82,8 +82,8 @@ suite('Unit Tests', function(){
   suite('Function convertHandler.getReturnUnit(initUnit)', function() {
     
     test('For Each Valid Unit Inputs', function(done) {
-      var input = ['gal','l','mi','km','lbs','kg'];
-      var expect = ['l','gal','km','mi','kg','lbs'];
+      var input = ['gal', 'l', 'mi', 'km', 'lbs', 'kg', 'GAL'];
+      var expect = ['L', 'gal', 'km', 'mi', 'kg', 'lbs', 'L'];
       input.forEach(function(ele, i) {
         var result = convertHandler.getReturnUnit(ele);
         assert.equal(result, expect[i], result + " does not equal " + expect[i]);
@@ -93,14 +93,19 @@ suite('Unit Tests', function(){
     
   });  
   
-  // suite('Function convertHandler.spellOutUnit(unit)', function() {
+  suite('Function convertHandler.spellOutUnit(unit)', function() {
     
-  //   test('For Each Valid Unit Inputs', function(done) {
-  //     //see above example for hint
-  //     done();
-  //   });
+    test('For Each Valid Unit Inputs', function(done) {
+      var input = ['L', 'gal', 'l', 'km', 'mi', 'lbs', 'kg', 'GAL'];
+      var expect =['litres', 'gallons', 'litres', 'kilometers', 'miles', 'pounds', 'kilograms', 'gallons'];
+      input.forEach(function(ele, i) {
+        var result = convertHandler.spellOutUnit(ele);
+        assert.equal(result, expect[i], result + " does not equal " + expect[i]);
+      })
+      done();
+    });
     
-  // });
+  });
   
   // suite('Function convertHandler.convert(num, unit)', function() {
     

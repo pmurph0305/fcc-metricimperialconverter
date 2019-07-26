@@ -37,18 +37,21 @@ function ConvertHandler() {
   };
   
   this.getReturnUnit = function(initUnit) {
-    var input = ['gal','l','mi','km','lbs','kg', 'GAL','L','MI','KM','LBS','KG'];
-    var output = ['l','gal','km','mi','kg','lbs', 'L', 'GAL', 'KM', 'MI', 'KG', 'LBS'];
+    // US: 5 -> 7 (Note litres is a capital L)
+    // 5. I can convert 'gal' to 'L' and vice versa. (1 gal to 3.78541 L)
+    // 6. I can convert 'lbs' to 'kg' and vice versa. (1 lbs to 0.453592 kg)
+    // 7. I can convert 'mi' to 'km' and vice versa. (1 mi to 1.60934 km)
+    var input = ['gal','l','mi','km','lbs','kg'];
+    var output = ['L','gal','km','mi','kg','lbs'];
     let inputIndex = input.indexOf(initUnit.toLowerCase());
-
     var result = output[inputIndex];
-    
     return result;
   };
 
   this.spellOutUnit = function(unit) {
-    var result;
-    
+    var input =  ['gal','l','mi','km','lbs','kg'];
+    var output = ['gallons', 'litres', 'miles', 'kilometers', 'pounds', 'kilograms'];
+    var result = output[input.indexOf(unit.toLowerCase())];
     return result;
   };
   
