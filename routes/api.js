@@ -15,7 +15,6 @@ module.exports = function (app) {
   
   var convertHandler = new ConvertHandler();
 
-
   // US 3: I can GET /api/convert with a single parameter containing an accepted number and unit and have it converted.
   app.route('/api/convert')
     .get(function (req, res){

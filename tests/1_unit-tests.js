@@ -11,7 +11,6 @@ var assert = chai.assert;
 var ConvertHandler = require('../controllers/convertHandler.js');
 
 var convertHandler = new ConvertHandler();
-
 // US 13: All 16 unit tests are complete and passing.
 suite('Unit Tests', function(){
   
