@@ -13,6 +13,7 @@ var server = require('../server');
 
 chai.use(chaiHttp);
 
+// US 14: All 5 functional tests are complete and passing.
 suite('Functional Tests', function() {
 
   suite('Routing Tests', function() {
@@ -33,37 +34,6 @@ suite('Functional Tests', function() {
           done();
         });
       });
-
-      test('Convert 3.78541L (valid input)', function(done) {
-        chai.request(server)
-         .get('/api/convert')
-         .query({ input: '3.78541L' })
-         .end(function(err, res){
-           assert.equal(res.status, 200);
-           assert.equal(res.body.initNum, 3.78541);
-           assert.equal(res.body.initUnit, 'L');
-           assert.approximately(res.body.returnNum, 1, 0.1);
-           assert.equal(res.body.returnUnit, 'gal');
-           assert.equal(res.body.string, '3.78541 litres converts to 1 gallons');
-           done();
-         });
-       });
-      
-
-       test('Convert 1/3L (valid input)', function(done) {
-        chai.request(server)
-         .get('/api/convert')
-         .query({ input: '1/3L' })
-         .end(function(err, res){
-           assert.equal(res.status, 200);
-           assert.approximately(res.body.initNum, 0.33, 0.01);
-           assert.equal(res.body.initUnit, 'L');
-           assert.approximately(res.body.returnNum, 0.08805647021, 0.1);
-           assert.equal(res.body.returnUnit, 'gal');
-           assert.equal(res.body.string, '0.33333 litres converts to 0.08806 gallons');
-           done();
-         });
-       });
 
       test('Convert 32g (invalid input unit)', function(done) {
         chai.request(server)

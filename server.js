@@ -4,12 +4,18 @@ var express     = require('express');
 var bodyParser  = require('body-parser');
 var expect      = require('chai').expect;
 var cors        = require('cors');
+const helmet = require('helmet');
+
 
 var apiRoutes         = require('./routes/api.js');
 var fccTestingRoutes  = require('./routes/fcctesting.js');
 var runner            = require('./test-runner');
 
 var app = express();
+//US 1: I will help prevent the client from trying to guess(sniff) the MIME type.
+app.use(helmet.noSniff());
+//US 2: I will prevent cross-site scripting (XSS) attacks.
+app.use(helmet.xssFilter());
 
 app.use('/public', express.static(process.cwd() + '/public'));
 

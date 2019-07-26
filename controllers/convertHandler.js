@@ -17,7 +17,7 @@ function ConvertHandler() {
       if (vals.length == 2) {
         return vals[0]/vals[1];   
       } else {
-        // US 8: If my unit of measurement is invalid, returned will be 'invalid unit'.
+        // US 9: If my number is invalid, returned with will 'invalid number'.
         return 'invalid number'
       }
     } else if (!result) {
@@ -31,6 +31,7 @@ function ConvertHandler() {
     let validUnits = ['gal','l','mi','km','lbs','kg','GAL','L','MI','KM','LBS','KG'];
     var result = validUnits.find(unit => unit === input);
     if (!result) {
+      // US 8: If my unit of measurement is invalid, returned will be 'invalid unit'.
       result = 'invalid unit';
     }
     return result;
