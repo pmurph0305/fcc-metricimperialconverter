@@ -29,7 +29,7 @@ module.exports = function (app) {
         // US 9: If my number is invalid, returned with will 'invalid number'.
         // US 10: If both are invalid, return will be 'invalid number and unit'.
         res.json({
-          error: initNum === 'invalid number' ? 'invalid number' + (initUnit === 'invalid unit' ? ' and unit' : '') : 'invalid unit'
+          string: initNum === 'invalid number' ? 'invalid number' + (initUnit === 'invalid unit' ? ' and unit' : '') : 'invalid unit'
         })
       } else {
         var returnNum = convertHandler.convert(initNum, initUnit);
