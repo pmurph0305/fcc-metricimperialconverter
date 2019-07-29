@@ -1,3 +1,10 @@
+**FreeCodeCamp**: Metric-Imperial Converter Project
+------
 
-# freeCodeCamp's Information Security and Quality Assurance - Metric-Imperial Converter project
-Available on glitch at https://modern-sole.glitch.me/
+Project for freeCodeCamp's Information Security and Quality Assurance Certification.
+
+Created by following user storys available on the website at https://modern-sole.glitch.me/
+
+Created using node, express, and chai.
+
+Available on Glitch at https://modern-sole.glitch.me/
